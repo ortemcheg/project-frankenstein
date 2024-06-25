@@ -1,0 +1,4 @@
+.env
+src/secrets.ts
+node_modules
+dist
