@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npx tsc --watch & npx nodemon --env-file=.env dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.8",
+    "nodemon": "^3.1.4",
     "typescript": "^5.5.2"
   },
   "dependencies": {
