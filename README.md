@@ -12,6 +12,8 @@ The `compilerOptions.module` option tells the TS compiler the module format of t
 
 Module specifiers are strings that follow `from` in `import something from "./module.js"`. So if you wrote somthing like `import hello from './world.ts'` and then compile it to JS, the TS compiler won't replace `./world.ts` with `./world.js` (note the extension). You'll get a compilation error if you try to run this in Node or in the browser.
 
+If the host supports extensionless paths, then there is no problem. However, Node.js requires that you specify the extensions; otherwise, your code won’t compile
+
 Interestingly, in your source code you can import a file with `ts` extension but reference it as a `js` file, so the following line in your sourfile:
 `import something from './module.js`
 will be interpreted by the TS compiler as
