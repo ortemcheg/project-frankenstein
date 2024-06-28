@@ -1,0 +1,36 @@
+// switch to 'default' environment to make TG_API_KEY available to you
+@host = https://api.telegram.org/bot{{TG_API_KEY}}/
+
+@sendPhoto = {{host}}sendPhoto
+
+@getMe = {{host}}getMe
+
+@getUpdates = {{host}}getUpdates
+
+@chat_id = 133712158
+
+GET {{getUpdates}} HTTP/1.1
+
+###
+POST {{sendPhoto}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "chat_id": "{{chat_id}}",
+    "photo": "https://picsum.photos/400/400?image={{$randomInt 0 500}}"
+}
+
+###
+POST {{sendPhoto}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="chat_id"
+
+{{chat_id}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< ./test.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
