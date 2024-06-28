@@ -1,15 +1,43 @@
 // switch to 'default' environment to make TG_API_KEY available to you
 @host = https://api.telegram.org/bot{{TG_API_KEY}}/
-
-@sendPhoto = {{host}}sendPhoto
-
-@getMe = {{host}}getMe
-
-@getUpdates = {{host}}getUpdates
-
 @chat_id = 133712158
 
+@getMe = {{host}}getMe
+@getUpdates = {{host}}getUpdates
+
+@sendPhoto = {{host}}sendPhoto
+@sendAudio = {{host}}sendAudio
+@sendVoice = {{host}}sendVoice
+@sendVenue = {{host}}sendVenue
+@sendLocation = {{host}}sendLocation
+
 GET {{getUpdates}} HTTP/1.1
+
+###
+POST {{sendVenue}}
+Content-Type: application/json
+
+{
+    "chat_id": "{{chat_id}}",
+    "latitude": 44.81456291213032,
+    "longitude": 20.451515426524242,
+    "title": "Rocket Coffee, specialty coffee shop",
+    "address": "Karađorđeva 49, Beograd 11000",
+    "google_place_id": "0x475a659de148a65f:0x5ed8d12ad5c3b1d6",
+    "google_place_type": "cafe"
+}
+
+###
+POST {{sendLocation}}
+Content-Type: application/json
+
+{
+    "chat_id": "{{chat_id}}",
+    "latitude": 44.81456291213032,
+    "longitude": 20.451515426524242,
+    "horizontal_accuracy": 200
+}
+
 
 ###
 POST {{sendPhoto}} HTTP/1.1
@@ -33,4 +61,62 @@ Content-Disposition: form-data; name="photo"; filename="test.jpg"
 Content-Type: image/jpeg
 
 < ./test.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+POST {{sendAudio}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="chat_id"
+
+{{chat_id}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="caption"
+
+My beautiful voice
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="duration"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="performer"
+
+Tyoma Deev
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+Test audio
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="thumbnail"
+
+https://picsum.photos/200/200?image={{$randomInt 0 500}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="audio"; filename="test.m4a"
+Content-Type: audio/mp4
+
+< ./test.m4a
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+POST {{sendVoice}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="chat_id"
+
+{{chat_id}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="caption"
+
+This is a caption
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="duration"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="voice"; filename="test.m4a"
+Content-Type: audio/mp4
+
+< ./test.m4a
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
