@@ -5,13 +5,51 @@
 @getMe = {{host}}getMe
 @getUpdates = {{host}}getUpdates
 
-@sendPhoto = {{host}}sendPhoto
 @sendAudio = {{host}}sendAudio
-@sendVoice = {{host}}sendVoice
-@sendVenue = {{host}}sendVenue
 @sendLocation = {{host}}sendLocation
+@sendMessage = {{host}}sendMessage
+@sendPhoto = {{host}}sendPhoto
+@sendVenue = {{host}}sendVenue
+@sendVoice = {{host}}sendVoice
 
 GET {{getUpdates}} HTTP/1.1
+###
+POST {{sendMessage}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "chat_id": "{{chat_id}}",
+    "text": "Want some coffee?",
+    "reply_markup": {
+        "keyboard": [
+            [
+                {
+                    "text": "Hide away now!",
+                    "one_time_keyboard": true
+                }
+            ]
+        ]
+        # "inline_keyboard": [
+        #     [
+        #         {
+        #             "text": "Tap me!",
+        #             "url": "https://example.com"
+        #         },
+        #         {
+        #             "text": "I'm useless",
+        #             "url": "https://example.com?whatever=true"
+        #         }
+        #     ],
+        #     [
+        #         {
+        #             "text": "One more",
+        #             "url": "https://example.com?hello=world"
+        #         }
+        #     ]
+        # ]
+    }
+
+}
 
 ###
 POST {{sendVenue}}
