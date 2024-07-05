@@ -1,28 +1,13 @@
-import axios from "axios";
+import { Bot } from "grammy";
 
 const { TG_API_TOKEN } = process.env;
 
-if (!TG_API_TOKEN) {
-  console.error("Can't find token for Telegram API");
-  throw new Error("Can't find token for Telegram API");
-}
+if (!TG_API_TOKEN) throw new Error("Provide a Telegram token!");
 
-const API_ENDPOINT = `https://api.telegram.org/bot${TG_API_TOKEN}/`;
+const bot = new Bot(TG_API_TOKEN);
 
-const getMe = "getMe";
-
-interface GetMeResponse {
-  ok: boolean;
-  result: {
-    [key: string]: unknown;
-  };
-}
-
-const instance = axios.create({
-  baseURL: API_ENDPOINT,
+bot.on("message", (ctx) => {
+  ctx.reply(`Your message says ${JSON.stringify(ctx.message.text)}`);
 });
 
-const response = await instance.get<GetMeResponse>(getMe);
-const { data, status, headers } = response;
-
-console.log({ data, status, headers });
+bot.start();
