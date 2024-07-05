@@ -1,0 +1,8 @@
+name: keep-your-gha-knowledge
+run-name: ${{ github.actor }} is running his tasks
+on: [push]
+jobs:
+  say-hello:
+    runs-on: ubuntu-latests
+    steps:
+      - run: echo "Hello from helloworkflow"
