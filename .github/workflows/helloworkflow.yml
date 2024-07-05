@@ -3,6 +3,6 @@ run-name: ${{ github.actor }} is running his tasks
 on: [push]
 jobs:
   say-hello:
-    runs-on: ubuntu-latests
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Hello from helloworkflow"
