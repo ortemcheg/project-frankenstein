@@ -12,7 +12,7 @@ const bot = new Bot<MyContext>(TG_API_TOKEN);
 bot.use(emojiParser());
 
 bot.command("hello", async (ctx) => {
-  const msg = ctx.emoji`Hello to you too ${"weary_cat"}`;
+  const msg = ctx.emoji`Hello to you too ${"weary_cat"}!`;
   await ctx.reply(msg);
 });
 
