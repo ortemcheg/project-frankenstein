@@ -1,8 +1,0 @@
-name: troubleshooter
-on: [push]
-jobs:
-  greet-the-world:
-    runs-on: ubuntu-latest
-    steps:
-      - name: greeting-the-world
-        run: echo "Hello world!"
