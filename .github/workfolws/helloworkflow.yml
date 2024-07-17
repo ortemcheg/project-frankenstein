@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latests
     steps:
       - name: Saying hello
-        run: echo "Hello $WHO"
+        run: echo "Hello $WHO !"
         env:
           WHO: ${{ github.actor }}
