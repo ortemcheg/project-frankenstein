@@ -4,5 +4,5 @@ jobs:
   greet-the-world:
     runs-on: ubuntu-latest
     steps:
-      - name: Greeting the world
-        run: echo "Hello world"
+      - name: greeting-the-world
+        run: echo "Hello world!"
