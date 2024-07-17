@@ -5,4 +5,5 @@ jobs:
   say-hello:
     runs-on: ubuntu-latests
     steps:
-      - run: echo "Hello from helloworkflow"
+      - name: Saying hello
+        run: echo "Hello from helloworkflow!"
